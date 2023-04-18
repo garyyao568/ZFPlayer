@@ -189,13 +189,13 @@
         [self.player seekToTime:self.player.totalTime*value completionHandler:^(BOOL finished) {
             @zf_strongify(self)
             self.slider.isdragging = NO;
-            if (finished) {
-                if (self.sliderValueChanged) self.sliderValueChanged(value);
-            }
+			if (self.sliderValueChanged) { self.sliderValueChanged(value);
+			}
+			if (self.seekToPlay) {
+				[self.player.currentPlayerManager play];
+			}
         }];
-        if (self.seekToPlay) {
-            [self.player.currentPlayerManager play];
-        }
+
     } else {
         self.slider.isdragging = NO;
         self.slider.value = 0;
