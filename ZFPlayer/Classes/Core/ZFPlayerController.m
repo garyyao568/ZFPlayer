@@ -758,7 +758,9 @@ static NSMutableDictionary <NSString* ,NSNumber *> *_zfPlayRecords;
     if (pauseByEvent) {
         [self.currentPlayerManager pause];
     } else {
-        [self.currentPlayerManager play];
+		if (self.shouldAutoPlay) {
+			[self.currentPlayerManager play];
+		}
     }
 }
 
